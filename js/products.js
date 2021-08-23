@@ -1,12 +1,12 @@
 // fetch
 document.addEventListener("DOMContentLoaded", function(e){
-    
-        for(let i = 0; i < data.length; i++){
-            let url = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-
-            fetch(url)
+let url = "https://japdevdep.github.io/ecommerce-api/product/all.json";
+             fetch(url)
                 .then(info => info.json())         //pone en variable info q toma de la url, convierto la var en json, llamo a esto data
-                .then(data => {
+                .then(data => {   
+                for(let i = 0; i < data.length; i++){
+                    
+
                     console.log(data.name);    
                     let nombre = data.name;
                     let descripcion = data.description;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                             <div class="col-3"> nombre` + cantidadVendida + `</div>
                         </div>
                     `
-                })    
+                }  
         }
 });         
          
