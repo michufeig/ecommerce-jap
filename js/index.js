@@ -1,3 +1,7 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function(e){
+    
+    document.getElementById("sendUsername").addEventListener("click", () => {    //el boton "entrar" con id sendusername
+        let usuario = document.getElementById("username").value;
+        localStorage.setItem("usuario", usuario);            //stores data (then retrieves it in init.js)
+    })   
+});

@@ -1,67 +1,76 @@
 // fetch
 document.addEventListener("DOMContentLoaded", function(e){
-let url = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-             fetch(url)
-                .then(info => info.json())         //pone en variable info q toma de la url, convierto la var en json, llamo a esto data
-                .then(data => {   
-                for(let i = 0; i < data.length; i++){
-                    
-
-                    console.log(data.name);    
-                    let nombre = data.name;
-                    let descripcion = data.description;
-                    let costo = data.cost;
-                    let moneda = data.currency;
-                    let imagen = data.imgSrc
-                    let cantidadVendida = data.soldCount;
-
-                    document.getElementsByClassName("list-group-item list-group-item-action").innerHTML += `
-                        <div class="row">
-                            <div class="col-3"> nombre` + nombre + `</div>
-                            <div class="col-3"> descripcion` + descripcion + `</div>
-                            <div class="col-3"> costo` + costo + `</div>
-                            <div class="col-3"> moneda` + moneda + `</div>
-                            <div class="col-3"> imagen` + imagen + `</div>
-                            <div class="col-3"> nombre` + cantidadVendida + `</div>
-                        </div>
-                    `
-                }  
-        }
-});         
-         
-
-
-
-
-
-
-
+    fetch(PRODUCTS_URL)
+        .then(info => info.json())         //pone en variable info q toma de la url, convierto la var en json, llamo a esto data
+        .then(data => {   
+            
             // let i = 0;
+            // while(i < data.length){
 
-            // while(i < data.results.length){             //menor a cantidad de peliculas - results
+            for(let i = 0; i < data.length; i++){                    
+                let nombre = data[i].name;
+                let descripcion = data[i].description;
+                let costo = data[i].cost;
+                let imagen = data[i].imgSrc;
 
-            //     let film = data.results[i];     //para no repetir en todos los renglones la chorrera, lo guardo en var. film
+                let productos = "";
 
-            //     let titulo = film.title;     //entro dentro del array a results, y a la posicion 0 (films), y dentro de eso a title
-            //     let director = film.director;
-            //     let fecha = film.release_date;
-            //     let cantPersonajes = film.characters.length;  // porq quiero la cantidad (Characters es una lista)
-            //     let cantPlanetas = film.planets.lenght;          
-                
-            //                                       //<div class="table-content" id="eldelatabla"> </div>               
-            //     document.getElementById("eldelatabla").innerHTML += `    
-            //         <div class="table-row">
-            //             <div class="table-data">titulo` + titulo + `</div>
-            //             <div class="table-data">titulo` + director + `</div>
-            //             <div class="table-data">titulo` + fecha + `</div>
-            //             <div class="table-data">titulo` + cantPersonajes + `</div>
-            //             <div class="table-data">titulo` + cantPlanetas + `</div>
-            //         </div>
-            //     `    
-            //                                            //trae el div de la tabla
-            //     i = i + 1
-            // }
-//         })
-// });
-//hago tabla en html, aca tengo q acceder a los datos y ponerlos en variables
+                productos += `
+                    <div class="row">
+                        <div class="col-3">
+                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ nombre +`</h4>
+                                <small class="text-muted"> USD ` + costo + `</small>
+                            </div>
+                            <p class="mb-1">` + descripcion + `</p>
+                        </div>
+                    </div>
+                `     
+                document.getElementById("listaProductos").innerHTML += productos;
+                // i = i + 1
+            }
+        });
+});
 
+    // document.getElementById("filterBtn").onclick = function() {
+document.getElementById("filterBtn").addEventListener("click", () => {
+    let minValue = document.getElementById("filterMin").value;
+    let maxValue = document.getElementById("filterMax").value;
+  
+    fetch(PRODUCTS_URL)
+        .then(info => info.json())         //pone en variable info q toma de la url, convierto la var en json, llamo a esto data
+        .then(data => {   
+
+        prodFiltrados = "";    
+        for(let i = 0; i < data; i++) {
+            let nombre = data[i].name;
+            let descripcion = data[i].description;
+            let costo = data[i].cost;
+            let imagen = data[i].imgSrc;
+
+            
+
+            if(costo > minValue && costo < maxValue) {                
+
+                prodFiltrados += `
+                    <div class="row">
+                        <div class="col-3">
+                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ nombre +`</h4>
+                                <small class="text-muted"> USD ` + costo + `</small>
+                            </div>
+                            <p class="mb-1">` + descripcion + `</p>
+                        </div>
+                    </div>
+                `         
+                document.getElementById("listaProductos").innerHTML = prodFiltrados;
+            }
+        }
+    })
+})

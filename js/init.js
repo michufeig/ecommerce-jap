@@ -40,5 +40,6 @@ var getJSONData = function(url){
     });
 }
 
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function(e){                             
+    document.getElementById("username").innerHTML = localStorage.getItem("usuario");         //retrieves the stored data
 });
