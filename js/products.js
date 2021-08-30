@@ -7,32 +7,36 @@ document.addEventListener("DOMContentLoaded", function(e){
             
             // let i = 0;
             // while(i < data.length){
-
-            for(let i = 0; i < data.length; i++){                    
-                let nombre = data[i].name;
-                let descripcion = data[i].description;
-                let costo = data[i].cost;
-                let imagen = data[i].imgSrc;
-
-                let productos = "";
-
-                productos += `
-                    <div class="row">
-                        <div class="col-3">
-                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
-                        </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">`+ nombre +`</h4>
-                                <small class="text-muted"> USD ` + costo + `</small>
+            function showProductsList() {
+                for(let i = 0; i < data.length; i++){                    
+                    let nombre = data[i].name;
+                    let descripcion = data[i].description;
+                    let costo = data[i].cost;
+                    let imagen = data[i].imgSrc;
+    
+                    let productos = "";
+    
+                    productos += `
+                        <div class="row">
+                            <div class="col-3">
+                            <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
                             </div>
-                            <p class="mb-1">` + descripcion + `</p>
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">`+ nombre +`</h4>
+                                    <small class="text-muted"> USD ` + costo + `</small>
+                                </div>
+                                <p class="mb-1">` + descripcion + `</p>
+                            </div>
                         </div>
-                    </div>
-                `     
-                document.getElementById("listaProductos").innerHTML += productos;
-                // i = i + 1
+                    `     
+                    document.getElementById("listaProductos").innerHTML += productos;
+                    // i = i + 1
+                }
             }
+
+            showProductsList();
+            
         });
 
         //ENTREGA 2. FILTRAR A PARTIR DE MINIMO Y MAXIMO INTRODUCIDO 
@@ -81,6 +85,11 @@ document.addEventListener("DOMContentLoaded", function(e){
                 }
                 
             })
+        }
+
+        document.getElementById("clearRangeFilter").onclick = function() {
+            document.getElementById("filterMin").value = "";
+            document.getElementById("filterMax").value = "";
         }
 
         //ENTREGA 2. ORDENAR ASCENDENTE Y DESCENDENTE SEGUN PRECIO Y RELEVANCIA 
@@ -138,58 +147,17 @@ document.addEventListener("DOMContentLoaded", function(e){
         } 
         
         document.getElementById("ORDENAR-PRECIO-ASC").onclick = function() {
-            criteria === price_ascendent;
-            return resultado;
+            sortProducts (price_ascendent, array);
         }
 
         document.getElementById("ORDENAR-PRECIO-DESC").onclick = function() {
-            criteria === price_descendent;
-            return resultado;
+            sortProducts (price_descendent, array);
         }
 
         document.getElementById("ORDENAR-RELEV-DESC").onclick = function() {
-            criteria === relevance_descendent;
-            return resultado;
+            sortProducts (relevance_descendent, array);
         }
 
-        document.getElementById("clearRangeFilter").onclick = function() {
-            document.getElementById("filterMin").value = "";
-            document.getElementById("filterMax").value = "";
-        }
-
-        prodFiltrados = "";    
-
-                if (minValue > maxValue) {
-                    alert("El precio mínimo debe ser menor al máximo"); 
-                }
-
-                for (let i = 0; i < data.length; i++) {
-                    let nombre = data[i].name;
-                    let descripcion = data[i].description;
-                    let costo = data[i].cost;
-                    let imagen = data[i].imgSrc;
-                    let cantVendida = data[i].soldCount;
-                    
-                    if (costo > minValue && costo < maxValue) {                
-        
-                        prodFiltrados += `
-                            <div class="row">
-                                <div class="col-3">
-                                <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h4 class="mb-1">`+ nombre +`</h4>
-                                        <small class="text-muted"> USD ` + costo + `</small>
-                                    </div>
-                                    <p class="mb-1">` + descripcion + `</p>
-                                </div>
-                            </div>
-                        `         
-                        document.getElementById("listaProductos").innerHTML = prodFiltrados;
-                    }
-
-                }
 });
 
  
