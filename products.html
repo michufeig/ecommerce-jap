@@ -29,51 +29,49 @@
       <div class="text-center p-4">
         <h2>Productos</h2>
         <p class="lead">Veras aquí el listado de productos disponibles.</p>
-      </div>  
+      </div>
 
+    <!-- ordenar ascendente y descendente -->
       <div class="container">
         <div class="row">
           <div class="col text-right">
             <div class="btn-group btn-group-toggle mb-4" data toggle="buttons">
-              <label class="btn btn-light active" id="sortAsc">
-                <input type="radio" name="options" autocomplete="off" checked>Aaaa-Zzzz
+              <label class="btn btn-light active" id="ORDENAR-PRECIO-ASC">
+                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Precio
               </label>
-              <label class="btn btn-light" id="sortDesc">
-                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Caaant.
+              <label class="btn btn-light" id="ORDENAR-PRECIO-DESC">
+                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Precio
+              </label>
+              <label class="btn btn-light" id="ORDENAR-RELEV-DESC">
+                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
               </label>
             </div>
           </div>
         </div>
+
         <div class="row justify-content-end">
           <div class="col-md-6"></div>
                 <div class="col-md-6 col-sm-12 mb-1 container">
                   <div class="row container p-0 m-0">
                     <div class="col">
-                      <p class="font-weight-normal text-right my-2">Preecio</p>
+                      <p class="font-weight-normal text-right my-2">Precio</p>
                     </div>
                     <div class="col">
-                      <input class="form-control" type="number" placeholder="miinimo" id="filterMin">
+                      <input class="form-control" type="number" placeholder="mínimo" id="filterMin">
                     </div>
                     <div class="col">
-                      <input class="form-control" type="number" placeholder="máaximo" id="filterMax">
+                      <input class="form-control" type="number" placeholder="máximo" id="filterMax">
                     </div>
                     <div class="col-3 p-0">
                       <div class="btn-group" role="group">
-                        <button class="btn btn-light btn-block" id="filterBtn">Fiiiiltrar precio</button>
-                        <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                        <button class="btn btn-light btn-block" id="filterBtn">Filtrar precio</button>
+                        <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar filtro</button>
                       </div>
                     </div>
                   </div>
                 </div>
           </div>
       </div>
-
-<!-- 
-      <div>
-        <input type="number" id="filterMin">
-        <input type="number" id="filterMax">
-      </div>
-      <div><button id="filterBtn">Filtrar precio</button></div> -->
 
       <div class="container">
         <div class="row" id="listaProductos">
