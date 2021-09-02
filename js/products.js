@@ -1,6 +1,7 @@
 // ENTREGA 1. MUESTRO LISTA DE PRODUCTOS
 
 document.addEventListener("DOMContentLoaded", function(e){
+    var array = [];
     fetch(PRODUCTS_URL)
         .then(info => info.json())         //pone en variable info q toma de la url, convierto la var en json, llamo a esto data
         .then(data => {   
@@ -8,14 +9,16 @@ document.addEventListener("DOMContentLoaded", function(e){
             // let i = 0;
             // while(i < data.length){
             function showProductsList() {
+                
                 for(let i = 0; i < data.length; i++){                    
                     let nombre = data[i].name;
                     let descripcion = data[i].description;
                     let costo = data[i].cost;
                     let imagen = data[i].imgSrc;
+                    let cantVendida = data[i].soldCount;
     
                     let productos = "";
-    
+                    
                     productos += `
                         <div class="row">
                             <div class="col-3">
@@ -27,12 +30,16 @@ document.addEventListener("DOMContentLoaded", function(e){
                                     <small class="text-muted"> USD ` + costo + `</small>
                                 </div>
                                 <p class="mb-1">` + descripcion + `</p>
+                                <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
                             </div>
                         </div>
                     `     
                     document.getElementById("listaProductos").innerHTML += productos;
+                    
+                    array.push(data[i]);
                     // i = i + 1
                 }
+                console.log(array)
             }
 
             showProductsList();
@@ -76,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                                         <small class="text-muted"> USD ` + costo + `</small>
                                     </div>
                                     <p class="mb-1">` + descripcion + `</p>
+                                    <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
                                 </div>
                             </div>
                         `         
@@ -90,23 +98,25 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("clearRangeFilter").onclick = function() {
             document.getElementById("filterMin").value = "";
             document.getElementById("filterMax").value = "";
+            showProductsList();
         }
 
         //ENTREGA 2. ORDENAR ASCENDENTE Y DESCENDENTE SEGUN PRECIO Y RELEVANCIA 
-        const price_ascendent = "precio_asc";
-        const price_descendent = "precio_desc";
+        const price_ascendent = "precio_ascendente";
+        const price_descendent = "precio_descendente";
         const relevance_descendent = "relevancia";
 
         function sortProducts (criteria, array) {
             let resultado = [];
+            prodOrdenados = "";
 
             if (criteria === price_ascendent) {
                 resultado = array.sort(function (previous, next) {
-                    if (parseInt(previous.costo) > parseInt(next.costo)) {    //convierto a nro
+                    if (parseInt(previous.cost) > parseInt(next.cost)) {    //convierto a nro
                         return 1;
                     }
     
-                    if (parseInt(previous.costo) < parseInt(next.costo)) {
+                    if (parseInt(previous.cost) < parseInt(next.cost)) {
                         return -1;
                     }
     
@@ -117,11 +127,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     
             else if (criteria === price_descendent) {
                 resultado = array.sort(function (previous, next) {
-                    if (parseInt(previous.costo) < parseInt(next.costo)) {
+                    if (parseInt(previous.cost) < parseInt(next.cost)) {
                         return 1;
                     }
     
-                    if (parseInt(previous.costo) > parseInt(next.costo)) {
+                    if (parseInt(previous.cost) > parseInt(next.cost)) {
                         return -1;
                     }
     
@@ -131,11 +141,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     
             else if (criteria === relevance_descendent) {
                 resultado = array.sort(function (previous, next) {
-                    if (parseInt(previous.cantVendida) < parseInt(next.cantVendida)) {
+                    if (parseInt(previous.soldCount) < parseInt(next.soldCount)) {
                         return 1;
                     }
     
-                    if (parseInt(previous.cantVendida) > parseInt(next.cantVendida)) {
+                    if (parseInt(previous.soldCount) > parseInt(next.soldCount)) {
                         return -1;
                     }
     
@@ -143,8 +153,33 @@ document.addEventListener("DOMContentLoaded", function(e){
                 })
             }
 
-            return resultado;
-        } 
+            for (let i = 0; i < array.length; i++) {
+                let nombre = array[i].name;
+                let descripcion = array[i].description;
+                let costo = array[i].cost;
+                let imagen = array[i].imgSrc;
+                let cantVendida = array[i].soldCount;           
+    
+                    resultado += `
+                        <div class="row">
+                            <div class="col-3">
+                            <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
+                            </div>
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h4 class="mb-1">`+ nombre +`</h4>
+                                    <small class="text-muted"> USD ` + costo + `</small>
+                                </div>
+                                <p class="mb-1">` + descripcion + `</p>
+                                <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
+                            </div>
+                        </div>
+                    `         
+                    document.getElementById("listaProductos").innerHTML += resultado;
+                
+
+            }        
+        }
         
         document.getElementById("ORDENAR-PRECIO-ASC").onclick = function() {
             sortProducts (price_ascendent, array);
@@ -157,6 +192,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("ORDENAR-RELEV-DESC").onclick = function() {
             sortProducts (relevance_descendent, array);
         }
+            // como muestro el array?????
+        
 
 });
 

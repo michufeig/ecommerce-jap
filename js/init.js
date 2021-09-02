@@ -42,4 +42,7 @@ var getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(e){                             
     document.getElementById("username").innerHTML = localStorage.getItem("usuario");         //retrieves the stored data
+    let fecha = new Date().toString();
+    document.getElementById("fechaActual").innerHTML = fecha;
+    fecha = localStorage.getItem("ultimoInicio"); 
 });
