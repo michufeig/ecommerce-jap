@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                     array.push(data[i]);
                     // i = i + 1
                 }
-                console.log(array)
+
             }
 
             showProductsList();
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                             </div>
                         </div>
                     `         
-                    document.getElementById("listaProductos").innerHTML += resultado;
+                    document.getElementById("listaProductos").innerHTML = resultado;
                 
 
             }        
