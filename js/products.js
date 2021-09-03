@@ -65,99 +65,52 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 
     //ENTREGA 2. ORDENAR ASCENDENTE Y DESCENDENTE SEGUN PRECIO Y RELEVANCIA 
-    const price_ascendent = "precio_ascendente";
-    const price_descendent = "precio_descendente";
-    const relevance_descendent = "relevancia";
-    
-    function sortProducts (criteria, array) {
-        let resultado = [];
-        prodOrdenados = [];
-   
-        if (criteria === price_ascendent) {
-            let resultado = array.sort(function (previous, next) {
-                if (parseInt(previous.cost) > parseInt(next.cost)) {    //convierto a nro
-                    return 1;
-                }
-    
-                if (parseInt(previous.cost) < parseInt(next.cost)) {
-                    return -1;
-                }
-    
-                return 0;
-            });
-        } 
-        // return previous.costo - next.costo
-    
-        else if (criteria === price_descendent) {
-            let resultado = array.sort(function (previous, next) {
-                if (parseInt(previous.cost) < parseInt(next.cost)) {
-                    return 1;
-                }
-    
-                if (parseInt(previous.cost) > parseInt(next.cost)) {
-                    return -1;
-                }
-    
-                return 0;
-            })
-        }
-    
-        else if (criteria === relevance_descendent) {
-            let resultado = array.sort(function (previous, next) {
-                if (parseInt(previous.soldCount) < parseInt(next.soldCount)) {
-                    return 1;
-                }
-    
-                if (parseInt(previous.soldCount) > parseInt(next.soldCount)) {
-                    return -1;
-                }
-    
-                return 0;
-            })
-        }
-        prodOrdenados = [];
-
-        for (let i = 0; i < array.length; i++) {
-            let nombre = array[i].name;
-            let descripcion = array[i].description;
-            let costo = array[i].cost;
-            let imagen = array[i].imgSrc;
-            let cantVendida = array[i].soldCount;           
-    
-                resultado += `
-                    <div class="row">
-                        <div class="col-3">
-                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
-                        </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">`+ nombre +`</h4>
-                                <small class="text-muted"> USD ` + costo + `</small>
-                            </div>
-                            <p class="mb-1">` + descripcion + `</p>
-                            <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
-                        </div>
-                    </div>
-                `         
-                document.getElementById("listaProductos").innerHTML = resultado;
-                
-
-        }        
-    }
     document.getElementById("ORDENAR-PRECIO-ASC").onclick = function() {
-        sortProducts (price_ascendent, array);
+        
+        fetch(PRODUCTS_URL)
+            .then(info => info.json())         
+            .then(data => {   
+        
+            data.sort(function (previous, next) {
+                return parseInt(previous.cost) - parseInt(next.cost);
+            })
+            
+            showProductsList(data);
+        })
     }
-
+    
     document.getElementById("ORDENAR-PRECIO-DESC").onclick = function() {
-        sortProducts (price_descendent, array);
+        
+        fetch(PRODUCTS_URL)
+            .then(info => info.json())         
+            .then(data => {   
+
+            data.sort(function (previous, next) {
+                return parseInt(next.cost) - parseInt(previous.cost);
+            })
+
+            showProductsList(data);
+        })
     }
 
     document.getElementById("ORDENAR-RELEV-DESC").onclick = function() {
-        sortProducts (relevance_descendent, array);
+        prodOrdenados = [];
+        fetch(PRODUCTS_URL)
+            .then(info => info.json())         
+            .then(data => {   
+      
+            data.sort(function (previous, next) {
+                    return parseInt(next.soldCount) - parseInt(previous.soldCount);
+            })
+            
+            showProductsList(data);
+        })
     }        
-        
-    
 
+
+
+
+    // LIMPIAR FILTRO
     document.getElementById("clearRangeFilter").onclick = function() {
         document.getElementById("filterMin").value = "";
         document.getElementById("filterMax").value = "";
