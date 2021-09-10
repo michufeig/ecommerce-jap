@@ -41,6 +41,14 @@ document.addEventListener("DOMContentLoaded", function(e){
             let descripcion = data[i].description;
             let usuario = data[i].user;
             let fecha = data[i].dateTime;
+            
+            // let estrellasPunt = "";
+            // for(let i=0; i < puntos.length; i++) {
+            //     estrellasPunt += `<span class="fa fa-star" style="color:yellow"/> `
+            
+
+                
+            // }
 
             let comentarios = "";
             comentarios += `
@@ -54,11 +62,20 @@ document.addEventListener("DOMContentLoaded", function(e){
                 <small class="text=muted">` + fecha + `</small>
 
             `     
-
-       
             document.getElementById("opinionProductos").innerHTML += comentarios;
         }
+
     });
+
+    //ENTREGA 3. DESAFIATE: intento mostrar mi comentario con los demas
+    document.getElementById("sendScore").onclick = function() {
+        document.getElementById("agregarComentario").value = "";
+    }
+
+    
 
 
 });
+
+
+
