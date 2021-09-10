@@ -14,9 +14,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             let productos = "";
             productos += `
+            <a href="product-info.html" class="list-group-item list-group-item-_action">
                 <div class="row">
                     <div class="col-3">
-                    <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
+                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                         <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
                     </div>
                 </div>
+            </a>
             `     
             document.getElementById("listaProductos").innerHTML += productos;
             array.push(data[i]);           //le agrego los datos al array q defini antes vacio
@@ -43,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         });
 
     //ENTREGA 2. FILTRAR A PARTIR DE MINIMO Y MAXIMO INTRODUCIDO 
-    document.getElementById("filterBtn").onclick = function() {                             // document.getElementById("filterBtn").addEventListener("click", () => {
+    document.getElementById("filterBtn").onclick = function() {         //event                    // document.getElementById("filterBtn").addEventListener("click", () => {
         let minValue = document.getElementById("filterMin").value;
         let maxValue = document.getElementById("filterMax").value;
 
