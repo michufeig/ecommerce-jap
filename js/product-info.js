@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                         <small class="text-muted">` + descripcion + `</small>
                     </div>        
                 </div>
-                <small class="text=muted">` + fecha + `</small>
+                <small class="text=muted">` + fecha + `<br></small>
 
             `     
             document.getElementById("opinionProductos").innerHTML += comentarios;
@@ -69,8 +69,16 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     //ENTREGA 3. DESAFIATE: intento mostrar mi comentario con los demas
     document.getElementById("sendScore").onclick = function() {
-        document.getElementById("agregarComentario").value = "";
-    }
+        document.getElementById("opinionProductos").innerHTML += `<div class="row">
+        <small class="text-muted">` + document.getElementById("estrellasYo").value + `</small>
+            <div class="col">
+                <h8 class="mb-1">` + localStorage.getItem("usuario") + ` <small class="text-muted"> dice: </small></h8><br>
+                <small class="text-muted">` + document.getElementById("agregarComentario").value + `</small>
+                </div>        
+            </div>
+            <small class="text=muted">` + localStorage.getItem("ultimoInicio") + `<br></small>
+        `
+    };
 
     
 
