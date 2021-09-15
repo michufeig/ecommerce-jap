@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         
     });
 
+    // ENTREGA 3. MUESTRO COMENTS
     fetch(PRODUCT_INFO_COMMENTS_URL)
     .then(info => info.json())
     .then(data => {
@@ -42,46 +43,43 @@ document.addEventListener("DOMContentLoaded", function(e){
             let usuario = data[i].user;
             let fecha = data[i].dateTime;
             
-            // let estrellasPunt = "";
-            // for(let i=0; i < puntos.length; i++) {
-            //     estrellasPunt += `<span class="fa fa-star" style="color:yellow"/> `
-            
+            let estrellasOpiniones = "";
 
-                
-            // }
+            for(let x = 0; x < puntos; x++) {
+                estrellasOpiniones += `<span style="color:orange"/> ★`                
+            }
 
             let comentarios = "";
             comentarios += `
-                <div class="row">
-                    <small class="text-muted">` + puntos + `</small>
-                    <div class="col">
-                        <h8 class="mb-1">` + usuario + ` <small class="text-muted"> dice: </small></h8><br>
-                        <small class="text-muted">` + descripcion + `</small>
-                    </div>        
-                </div>
-                <small class="text=muted">` + fecha + `<br></small>
-
+                <h8 class="mb-1">` + estrellasOpiniones + `</h8> <br>  
+                <h8 class="mb-1">` + descripcion + `</h8><br>
+                <small class="text-muted">` + usuario + ` comentó el ` + fecha + `</small><br><br>
+            
             `     
+
             document.getElementById("opinionProductos").innerHTML += comentarios;
         }
-        let puntos = document.getElementById("valor").value
-        console.log(puntos)
     });
 
     //ENTREGA 3. DESAFIATE: muestro mi comentario con los demas
     document.getElementById("sendScore").onclick = function() {
 
+        let estrellasMias = "";
+
+        for(let x = 0; x < document.getElementById("valor").innerHTML; x++) {  //ese inner html mostraria el nro q marco de estrellas
+            estrellasMias += `<span style="color:orange"/> ★`                
+        }
+        
+
         document.getElementById("opinionProductos").innerHTML += `
-            <div class="row">
-                <small class="text-muted">` + document.getElementById("valor").innerHTML + `</small>
-                <div class="col">
-                    <h8 class="mb-1">` + localStorage.getItem("usuario") + ` <small class="text-muted"> dice: </small></h8><br>
-                    <small class="text-muted">` + document.getElementById("agregarComentario").value + `</small>
-                </div>        
-            </div>
-            <small class="text=muted">` + localStorage.getItem("ultimoInicio") + `<br></small>
+            <h8 class="mb-1">` + estrellasMias + `</h8><br>
+            <h8 class="mb-1">` + document.getElementById("agregarComentario").value + `</h8><br>
+            <small class="text-muted">` + localStorage.getItem("usuario") + ` comentó el ` + localStorage.getItem("ultimoInicio") + `</small><br><br>
+ 
         `
+
         document.getElementById("agregarComentario").value = "";
+        document.getElementById("valor").innerHTML = "";
     };
 
     
