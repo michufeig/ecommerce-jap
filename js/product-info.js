@@ -43,15 +43,15 @@ document.addEventListener("DOMContentLoaded", function(e){
             let usuario = data[i].user;
             let fecha = data[i].dateTime;
             
-            let estrellasOpiniones = "";
+            let estrellasOtros = "";
 
             for(let x = 0; x < puntos; x++) {
-                estrellasOpiniones += `<span style="color:orange"/> ★`                
+                estrellasOtros += `<span style="color:orange"/> ★`                
             }
 
             let comentarios = "";
             comentarios += `
-                <h8 class="mb-1">` + estrellasOpiniones + `</h8> <br>  
+                <h8 class="mb-1">` + estrellasOtros + `</h8> <br>  
                 <h8 class="mb-1">` + descripcion + `</h8><br>
                 <small class="text-muted">` + usuario + ` comentó el ` + fecha + `</small><br><br>
             
@@ -68,8 +68,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         for(let x = 0; x < document.getElementById("valor").innerHTML; x++) {  //ese inner html mostraria el nro q marco de estrellas
             estrellasMias += `<span style="color:orange"/> ★`                
-        }
-        
+        }     
 
         document.getElementById("opinionProductos").innerHTML += `
             <h8 class="mb-1">` + estrellasMias + `</h8><br>
@@ -80,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         document.getElementById("agregarComentario").value = "";
         document.getElementById("valor").innerHTML = "";
+        
     };
 
     
