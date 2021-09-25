@@ -26,9 +26,20 @@ document.addEventListener("DOMContentLoaded", function(e){
                 </div>
             </div>
             `
-
             document.getElementById("productImagesGallery").innerHTML += imagen;
         }
+
+        //ENTREGA 4. Muestro related products
+        for(let i = 0; i < data.relatedProducts.length; i++){        
+            let prodRelacionados = data.relatedProducts[i];     //prodRelacionados tiene 1 y 3
+            
+            let relacionados = "";     
+            relacionados += `
+            <h8 class="mb-1">` + prodRelacionados + `</h8><br>    
+            `
+            document.getElementById("relatedProducts").innerHTML += relacionados;
+        }
+
         
     });
 
@@ -83,8 +94,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     };
 
     
-
-
+    
 });
 
 
