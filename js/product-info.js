@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     fetch(PRODUCT_INFO_URL)
     .then(info => info.json())      
     .then(data => {   
-
         let nombre = data.name;
         let descripcion = data.description;
         let costo = data.cost;
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 <div class="d-block mb-4 h-100">
                     <img class="img-fluid img-thumbnail" src="` + imagenes + `" alt="">
                 </div>
-            </div>
+            </div> <br>
             `
             document.getElementById("productImagesGallery").innerHTML += imagen;
         }
@@ -33,14 +32,31 @@ document.addEventListener("DOMContentLoaded", function(e){
         for(let i = 0; i < data.relatedProducts.length; i++){        
             let prodRelacionados = data.relatedProducts[i];     //prodRelacionados tiene 1 y 3
             
-            let relacionados = "";     
-            relacionados += `
-            <h8 class="mb-1">` + prodRelacionados + `</h8><br>    
-            `
-            document.getElementById("relatedProducts").innerHTML += relacionados;
-        }
+            fetch(PRODUCTS_URL)
+            .then(info => info.json())      
+            .then(data => {                  
 
+                    let nombreProdRelacionados = data[prodRelacionados].name    
+                    let imgProdRelacionados = data[prodRelacionados].imgSrc                 
+
+                    let relacionados = "";     
+                    relacionados += `
+                    <div class="col-3">
+                        <img src="` + imgProdRelacionados + `" alt="` + nombreProdRelacionados + `" class="img-thumbnail"> 
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h8 class="mb-1">`+ nombreProdRelacionados +`</h8>
+                        </div>
+                    </div> <br>
+                    `
+                    
+                    document.getElementById("relatedProducts").innerHTML += relacionados;
+                
+            })  
+        }
         
+ 
     });
 
     // ENTREGA 3. MUESTRO COMENTS
