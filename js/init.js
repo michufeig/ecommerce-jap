@@ -41,6 +41,6 @@ var getJSONData = function(url){
 }
 
 document.addEventListener("DOMContentLoaded", function(e){                             
-    document.getElementById("username").innerHTML = localStorage.getItem("usuario") + `<br><small class="text-muted"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")         //retrieves the stored data  
+    document.getElementById("username").innerHTML = localStorage.getItem("usuario") + `<br><small style="color: white"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")         //retrieves the stored data  
     
 });
