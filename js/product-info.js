@@ -36,23 +36,19 @@ document.addEventListener("DOMContentLoaded", function(e){
             .then(info => info.json())      
             .then(data => {                  
 
-                    let nombreProdRelacionados = data[prodRelacionados].name    
-                    let imgProdRelacionados = data[prodRelacionados].imgSrc                 
+                let nombreProdRelacionados = data[prodRelacionados].name    
+                let imgProdRelacionados = data[prodRelacionados].imgSrc                 
 
-                    let relacionados = "";     
-                    relacionados += `
-                    <div class="col-3">
-                        <img src="` + imgProdRelacionados + `" alt="` + nombreProdRelacionados + `" class="img-thumbnail"> 
+                let relacionados = "";     
+                relacionados += `
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail" src="` + imgProdRelacionados + `" alt="` + nombreProdRelacionados + `"> 
+                        <h8 class="mb-1">`+ nombreProdRelacionados +`</h8>
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h8 class="mb-1">`+ nombreProdRelacionados +`</h8>
-                        </div>
-                    </div> <br>
-                    `
-                    
-                    document.getElementById("relatedProducts").innerHTML += relacionados;
-                
+                </div>
+                `                    
+                document.getElementById("relatedProducts").innerHTML += relacionados;
             })  
         }
         
