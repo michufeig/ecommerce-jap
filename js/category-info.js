@@ -38,4 +38,5 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(category.images);
         }
     });
+
 });

@@ -103,9 +103,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("agregarComentario").value = "";
         document.getElementById("valor").innerHTML = "";
         
-    };
-
-    
+    };    
     
 });
 
