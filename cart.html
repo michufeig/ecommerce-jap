@@ -54,14 +54,51 @@
             </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Carrito</h2>
+      </div>
+
+      <h3>Productos en tu carrito</h3>
+      <hr class="my-3">
+
+      <dl>
+        <dt>Artículo</dt>
+        <dd>
+          <p id="articleName"></p>
+        </dd>
+  
+        <dt></dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="articleImage">
+          </div>
+        </dd>
+
+        <dt>Costo unitario</dt>
+        <dd>
+          <p id="unitCost"></p>
+        </dd>
+
+        <button id="menos"> - </button>
+        
+        <dt>Cantidad</dt>
+        <dd>
+          <p id="articleCount"></p>
+        </dd>
+
+        <button id="mas"> + </button>
+
+        <dt>Costo total</dt>
+        <dd>
+          <p class="input-area" id="costoTotal"></p>
+        </dd>
+      </dl><br><br>
+
     </div>
-  </div>
+  </main>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -70,6 +107,7 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>

@@ -43,11 +43,9 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){                             
     document.getElementById("username").innerHTML = localStorage.getItem("usuario") + `<br><small style="color: white"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")         //retrieves the stored data      
 });
-
     
-  //ENTREGA 4: menu desplegable
-  document.getElementById("cerrarSesion").onclick = function() {
-    localStorage.clear();
-    let iniciarSesion = "Iniciar Sesión"
-    document.getElementById("username").innerHTML = iniciarSesion
-  }
+//ENTREGA 4: menu desplegable
+document.getElementById("cerrarSesion").onclick = function() {
+  localStorage.clear();
+  document.getElementById("username").innerHTML = "Inicia sesión/Registrate"
+}
