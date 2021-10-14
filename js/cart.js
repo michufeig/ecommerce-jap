@@ -18,53 +18,95 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("subtotal").innerHTML = subtotal;
         
         //ENTREGA 5. Variar cantidad y actualizar subtotal
-        // let variable = "";
+        let costoEnvio = document.getElementById("costoEnvio").value;  
+        let porcentaje = 0.15;
+        actualizarCostoEnvio();
+        actualizarCantidad();
 
-        document.getElementById("menos").onclick = function() {
-            // variable = "menos";
+        function actualizarCostoEnvio(){
 
-            cantidad --
-            let subtotal = costoUnitario * cantidad
-            
+            costoEnvio = Math.round(subtotal * porcentaje)
+            document.getElementById("costoEnvio").innerHTML = costoEnvio;
+            let costoTotal = subtotal + costoEnvio;
+            document.getElementById("costoTotal").innerHTML = costoTotal;
+        }
+
+        function actualizarCantidad(){
+
+            subtotal = costoUnitario * cantidad
             document.getElementById("cantidad").value = cantidad;
             document.getElementById("cantidad").innerHTML = cantidad;
             document.getElementById("subtotal").innerHTML = subtotal;
+        }
+
+        document.getElementById("premium").onchange = function() {
+            porcentaje = this.value;
+            actualizarCostoEnvio()
+        }
+
+        document.getElementById("express").onchange = function() {
+            porcentaje = this.value;
+            actualizarCostoEnvio()
+        }
+
+        document.getElementById("standard").onchange = function() {
+            porcentaje = this.value;
+            actualizarCostoEnvio()
+        }
+
+        document.getElementById("menos").onclick = function() {
+            cantidad--
+            actualizarCantidad()
+            actualizarCostoEnvio()
+
         }
     
         document.getElementById("mas").onclick = function() {
-            // variable = "mas";
-
-            cantidad ++
-            let subtotal = costoUnitario * cantidad
-    
-            document.getElementById("cantidad").value = cantidad;
-            document.getElementById("cantidad").innerHTML = cantidad;
-            document.getElementById("subtotal").innerHTML = subtotal;
+            cantidad++
+            actualizarCantidad()
+            actualizarCostoEnvio()
         }
 
-        //ENTREGA 5. Costo de envio e importe total
-        let costoEnvio = document.getElementById("costoEnvio").value;
         
-        document.getElementById("standard").onclick = function() {
+        // document.getElementById("menos").onchange = function() {
+        //     cantidad--
+        //     actualizarCantidad()
+        //     // actualizarCostoEnvio()
+        // }
 
-            costoEnvio = 0;
-            document.getElementById("costoEnvio").innerHTML = costoEnvio;
-            let costoTotal = subtotal + costoEnvio;
-            document.getElementById("costoTotal").innerHTML = costoTotal;
-        }
+        // document.getElementById("mas").onchange = function() {
+        //     cantidad++
+        //     actualizarCantidad()
+        //     // actualizarCostoEnvio()
+        // }
 
-        document.getElementById("express").onclick = function() {
-            costoEnvio = 200;    
-            document.getElementById("costoEnvio").innerHTML = costoEnvio;
-            let costoTotal = subtotal + costoEnvio;
-            document.getElementById("costoTotal").innerHTML = costoTotal;
-        }
+        // //ENTREGA 5. Costo de envio e importe total
+        // let costoEnvio = document.getElementById("costoEnvio").value;
+        
+        // document.getElementById("premium").onclick = function() {
+        //     costoEnvio = 0;
+
+        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
+        //     let costoTotal = subtotal + costoEnvio;
+        //     document.getElementById("costoTotal").innerHTML = costoTotal;
+        // }
+
+        // document.getElementById("express").onclick = function() {
+        //     costoEnvio = 200;    
+
+        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
+        //     let costoTotal = subtotal + costoEnvio;
+        //     document.getElementById("costoTotal").innerHTML = costoTotal;
+        // }
+
+        // document.getElementById("standard").onclick = function() {
+        //     costoEnvio = 200;    
+
+        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
+        //     let costoTotal = subtotal + costoEnvio;
+        //     document.getElementById("costoTotal").innerHTML = costoTotal;
+        // }
 
     })
-
-
-
-
-
 
 });
