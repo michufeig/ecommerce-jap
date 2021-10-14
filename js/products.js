@@ -109,9 +109,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         })
     }        
 
-
-
-
     // LIMPIAR FILTRO
     document.getElementById("clearRangeFilter").onclick = function() {
         document.getElementById("filterMin").value = "";
