@@ -50,12 +50,18 @@
         <p>
           Nombre de usuario:
         </p>
-        <input type="email" name="email" placeholder="Ingresa tu email" id="username" required>
+        <div class="input-group" style="width: 30%">
+          <div class="input-group-prepend" style="align-items: center;">
+            <span class="input-group-text" id="arroba">@</span>
+          </div>
+          <input type="email" class="form-control" name="email" placeholder="Ingresa tu email" id="username" aria-describedby="arroba" required>
+        </div>  
+          
         <p>
           Contrasena:
         </p>
         <input type="password" minlength="8" name="password" placeholder="Ingresa tu clave" id="password" required>
-   
+
         <br><br><button formaction="home.html" type="submit" id="sendUsername">Entrar</button>
       </form>
       
