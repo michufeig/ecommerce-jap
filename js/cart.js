@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("unitCost").innerHTML = moneda + " " + costoUnitario;
         document.getElementById("cantidad").innerHTML = cantidad;
         document.getElementById("subtotal").innerHTML = subtotal;
+        document.getElementById("subtotal1").innerHTML = subtotal;
         
         //ENTREGA 5. Variar cantidad y actualizar subtotal
         let costoEnvio = document.getElementById("costoEnvio").value;  
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             document.getElementById("cantidad").value = cantidad;
             document.getElementById("cantidad").innerHTML = cantidad;
             document.getElementById("subtotal").innerHTML = subtotal;
+            document.getElementById("subtotal1").innerHTML = subtotal;
         }
 
         document.getElementById("premium").onchange = function() {
@@ -67,20 +69,18 @@ document.addEventListener("DOMContentLoaded", function(e){
             actualizarCostoEnvio()
         }
 
-        
-        // document.getElementById("menos").onchange = function() {
-        //     cantidad--
-        //     actualizarCantidad()
-        //     // actualizarCostoEnvio()
-        // }
+        document.getElementById("comprarBoton").onclick = function() {
+            alert("Gracias por tu compra!");
 
-        // document.getElementById("mas").onchange = function() {
-        //     cantidad++
-        //     actualizarCantidad()
-        //     // actualizarCostoEnvio()
-        // }
+        }
 
-        // //ENTREGA 5. Costo de envio e importe total
+    });
+
+});
+
+
+
+  // //ENTREGA 5. Costo de envio e importe total
         // let costoEnvio = document.getElementById("costoEnvio").value;
         
         // document.getElementById("premium").onclick = function() {
@@ -106,7 +106,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         //     let costoTotal = subtotal + costoEnvio;
         //     document.getElementById("costoTotal").innerHTML = costoTotal;
         // }
-
-    })
-
-});
