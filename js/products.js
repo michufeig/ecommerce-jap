@@ -5,35 +5,64 @@ document.addEventListener("DOMContentLoaded", function(e){
     function showProductsList(data) {
         document.getElementById("listaProductos").innerHTML = "";        //primero me vacia, me elimina lo q hay (sirve dsp pa filtrar)
         
-        for(let i = 0; i < data.length; i++){                    
-            let nombre = data[i].name;
-            let descripcion = data[i].description;
-            let costo = data[i].cost;
-            let imagen = data[i].imgSrc;
-            let cantVendida = data[i].soldCount;
+        `<div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">`
 
-            let productos = "";
-            productos += `
-            <a href="product-info.html" class="list-group-item list-group-item-_action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ nombre +`</h4>
-                            <small class="text-muted"> USD ` + costo + `</small>
+                    for(let i = 0; i < data.length; i++){                    
+                        let nombre = data[i].name;
+                        let descripcion = data[i].description;
+                        let costo = data[i].cost;
+                        let imagen = data[i].imgSrc;
+                        let cantVendida = data[i].soldCount;
+
+                        let productos = "";
+                        productos += `
+
+                        <div class="col-md-5">
+                            <a href="product.info.html" class="card mb-4 shadow-sm custom-card">
+                                <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail">
+                                <h4 class="m-3">` + nombre + `     ....     USD ` + costo + `</h4>
+                                <h6 class="m-3">` + descripcion + `</h6>
+                                <div class="card-body">
+                                    <p class="card-text"> (` + cantVendida + ` unidades vendidas) <p>
+                                </div>
+                            </a>
                         </div>
-                        <p class="mb-1">` + descripcion + `</p>
-                        <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
-                    </div>
+                        `
+
+                        document.getElementById("listaProductos").innerHTML += productos;
+                        array.push(data[i]);           //le agrego los datos al array q defini antes vacio
+                    }
+                `</div>
+                <div class="row">
+                    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html"> Ver todos </a>
                 </div>
-            </a>
-            `     
-            document.getElementById("listaProductos").innerHTML += productos;
-            array.push(data[i]);           //le agrego los datos al array q defini antes vacio
-        }
+            </div>
+        </div> 
+        `
+       
     }
+
+            // let productos = "";
+            // productos += `
+            // <a href="product-info.html" class="list-group-item list-group-item-_action">
+            //     <div class="row">
+            //         <div class="col-3">
+            //             <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
+            //         </div>
+            //         <div class="col">
+            //             <div class="d-flex w-100 justify-content-between">
+            //                 <h4 class="mb-1">`+ nombre +`</h4>
+            //                 <small class="text-muted"> USD ` + costo + `</small>
+            //             </div>
+            //             <p class="mb-1">` + descripcion + `</p>
+            //             <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
+            //         </div>
+            //     </div>
+            // </a>
+            // `   
+
 
     // ENTREGA 1. MUESTRO LISTA DE PRODUCTOS
     fetch(PRODUCTS_URL)
