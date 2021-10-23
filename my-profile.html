@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -82,23 +82,23 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="arroba1">@</span>
             </div>
-            <input type="text" class="form-control" id="username1" placeholder="Nombre usuario" aria-describedby="arroba1" required>
+            <input type="email" class="form-control" id="username1" placeholder="Nombre usuario (email)" aria-describedby="arroba1" required>
           </div>
         </div>
       </div><br>
 
       <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="documento">Documento</label>
-          <input type="text" class="form-control" id="documento" placeholder="C.I. sin puntos ni guiones" required>
-        </div>
         <div class="col-md-3 mb-3">
-          <label for="codigo">Código país</label>
-          <input type="text" class="form-control" id="codigo" placeholder="+598" required>
+          <label for="edad">Edad</label>
+          <input type="text" class="form-control" id="edad" placeholder="Indica tu edad" required>
         </div>
         <div class="col-md-3 mb-3">
           <label for="celular">Celular</label>
-          <input type="text" class="form-control" id="celular" placeholder="9- --- ---" required>
+          <input type="text" class="form-control" id="celular" placeholder="+598" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="documento">Documento</label>
+          <input type="text" class="form-control" id="documento" placeholder="C.I. sin puntos ni guiones">
         </div>
       </div><br>
 
@@ -110,9 +110,11 @@
           </label>
         </div>
       </div>
-      <button class="btn btn-primary" type="submit">Actualizar información personal</button>
+      <button class="btn btn-primary" id="botonInfo" type="button">Actualizar información personal</button>
     </form>
   </div>
+
+  <div id="mostrarAca">Mostrar aca datos</div>
 
 <br><br>
   <div class="container">

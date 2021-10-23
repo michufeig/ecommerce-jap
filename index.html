@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -43,29 +43,31 @@
     <img class="img login" src="img/login.png" height="280" alt="login">
 
       <h4 class="alert-heading">¡Bienvenido!</h4>
+      <p> Para continuar, debes ingresar tu usuario y contraseña: </p>
+
       <form>
-        <p>
-          Para continuar, debes ingresar tu usuario y contraseña:
-        </p>
-        <p>
-          Nombre de usuario:
-        </p>
-        <!-- <div class="input-group" class="container" style="width: 30%"> -->
-          <div class="input-group-prepend" style="align-items: center;" style="margin-left: 30%;">
-            <span class="input-group-text" id="arroba">@</span>
-          
-            <input type="email" class="container" name="email" placeholder="Ingresa tu email" id="username" aria-describedby="arroba" required>
-        </div>
-        <!-- </div>   -->
-          <div class="container">
-            <p>
-              Contrasena:
-            </p>
-            <input type="password" minlength="8" name="password" placeholder="Ingresa tu clave" id="password" required>
-    
+        <div class="form-row">
+          <div class="col-md-4 mb-1" style="margin-left: auto;margin-right: auto">
+            <label for="username">Nombre de usuario (e-mail):</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="arroba">@</span>
+              </div>
+              <input type="email" class="form-control" id="username" placeholder="Ingresa tu nombre de usuario (email)" aria-describedby="arroba" name="email" required>
+            </div>
           </div>
-        
-        <br><br><button formaction="home.html" type="submit" id="sendUsername">Entrar</button>
+        </div> <br>
+
+        <div class="form-row">
+          <div class="col-md-4 mb-1" style="margin-left: auto;margin-right: auto">
+            <label for="contrasena">Contraseña:</label>
+            <div>
+              <input type="password" class="form-control" id="password" placeholder="Ingresa tu clave" name="password" minlength="8" required>
+            </div>
+          </div> 
+        </div>
+          
+        <br><button class="btn btn-primary" formaction="home.html" type="submit" id="sendUsername">Entrar</button>
       </form>
       
       <hr>

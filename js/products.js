@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                         let productos = "";
                         productos += `
 
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <a href="product.info.html" class="card mb-4 shadow-sm custom-card">
                                 <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail">
                                 <h4 class="m-3">` + nombre + `     ....     USD ` + costo + `</h4>
