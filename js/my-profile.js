@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let celularAct = document.getElementById("celular").value;
         let documentoAct = document.getElementById("documento").value;
         let fotoPerfil = document.getElementById("fotoPerfil");
+
         // no logre imagen
         fotoPerfil.addEventListener("load", function () {
             var imgCanvas = document.createElement("canvas");
@@ -27,27 +28,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }, false)
 
-        localStorage.setItem("nombreAct", nombreAct);                             
-        localStorage.setItem("apellidoAct", apellidoAct);
-        localStorage.setItem("usernameAct", usernameAct);                              
-        localStorage.setItem("edadAct", edadAct);
-        localStorage.setItem("celularAct", celularAct);                              
-        localStorage.setItem("documentoAct", documentoAct);
+        let datosUser = {"nombre": nombreAct,
+        "apellido": apellidoAct,
+        "username1": usernameAct,
+        "edad": edadAct,
+        "celular": celularAct,
+        "documento": documentoAct
+        };
 
-        let devuelveNombre = localStorage.getItem("nombreAct")
-        let devuelveApellido = localStorage.getItem("apellidoAct")
-        let devuelveUsername = localStorage.getItem("usernameAct")
-        let devuelveEdad = localStorage.getItem("edadAct")
-
-        document.getElementById("nombre").value = localStorage.getItem("nombreAct")
-
-        document.getElementById("apellido").innerHTML = localStorage.getItem("apellidoAct")
-        document.getElementById("username1").innerHTML = localStorage.getItem("usernameAct")
-        document.getElementById("edad").innerHTML = localStorage.getItem("edadAct")
-        document.getElementById("celular").innerHTML = localStorage.getItem("celularAct")
-        document.getElementById("documento").innerHTML = localStorage.getItem("documentoAct")
-
-        document.getElementById("mostrarAca").innerHTML = localStorage.getItem("nombreAct") + localStorage.getItem("apellidoAct") + localStorage.getItem("fotoPerfil");
+        localStorage.setItem("datosUser",JSON.stringify(datosUser));
     }
 
+    let getUser =  localStorage.getItem("datosUser");
+    let parseGetUser = JSON.parse(getUser)
+        
+    document.getElementById("nombre").value = parseGetUser.nombre
+    document.getElementById("apellido").value = parseGetUser.apellido
+    document.getElementById("username").innerHTML = parseGetUser.username1 + `<br><small style="color: white"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")
+    document.getElementById("username1").value = parseGetUser.username1
+    document.getElementById("edad").value = parseGetUser.edad
+    document.getElementById("celular").value = parseGetUser.celular
+    document.getElementById("documento").value = parseGetUser.documento
+    
 });
