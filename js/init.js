@@ -39,13 +39,20 @@ var getJSONData = function(url){
         return result;
     });
 }
+  
+document.getElementById("username").innerHTML = localStorage.getItem("usuario") + `<br><small style="color: white"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")       //retrieves the stored data        
 
-document.addEventListener("DOMContentLoaded", function(e){                             
-    document.getElementById("username").innerHTML = localStorage.getItem("usuario") + `<br><small style="color: white"> Último inicio de sesión: `+ localStorage.getItem("ultimoInicio")       //retrieves the stored data      
-});
-    
+document.getElementById("actualizarInfo").onclick = function() {
+  document.getElementById("username").innerHTML = localStorage.getItem("usuario")
+  // JSON.parse(localStorage.getItem("datosUser")).document.getElementById("username1").value
+}
+
+
 //ENTREGA 4: menu desplegable
 document.getElementById("cerrarSesion").onclick = function() {
-  localStorage.clear();
-  document.getElementById("username").innerHTML = "Inicia sesión/Registrate"
-}
+  localStorage.clear();    
+} 
+
+  
+  // + `<br><small style="color: white"> Último inicio de sesión: `+ JSON.parse(localStorage.getItem("datosUser")).ultimoInicio2
+  

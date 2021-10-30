@@ -19,14 +19,12 @@ document.addEventListener("DOMContentLoaded", function(e){
                         let productos = "";
                         productos += `
 
-                        <div class="col-md-6">
-                            <a href="product.info.html" class="card mb-4 shadow-sm custom-card">
+                        <div class="col-md-5">
+                            <a href="product.info.html" class="card mb-4 shadow-sm custom-card" style="height: 450px">
                                 <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail">
-                                <h4 class="m-3">` + nombre + `     ....     USD ` + costo + `</h4>
+                                <h4 class="m-3">` + nombre + `     -     USD ` + costo + `</h4>
                                 <h6 class="m-3">` + descripcion + `</h6>
-                                <div class="card-body">
-                                    <p class="card-text"> (` + cantVendida + ` unidades vendidas) <p>
-                                </div>
+                                <h6 class="m-3"> (` + cantVendida + ` unidades vendidas) </h6>
                             </a>
                         </div>
                         `
@@ -43,26 +41,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         `
        
     }
-
-            // let productos = "";
-            // productos += `
-            // <a href="product-info.html" class="list-group-item list-group-item-_action">
-            //     <div class="row">
-            //         <div class="col-3">
-            //             <img src="` + imagen + `" alt="` + descripcion + `" class="img-thumbnail"> 
-            //         </div>
-            //         <div class="col">
-            //             <div class="d-flex w-100 justify-content-between">
-            //                 <h4 class="mb-1">`+ nombre +`</h4>
-            //                 <small class="text-muted"> USD ` + costo + `</small>
-            //             </div>
-            //             <p class="mb-1">` + descripcion + `</p>
-            //             <small class="text-muted"> ` + cantVendida + ` unidades vendidas </small>
-            //         </div>
-            //     </div>
-            // </a>
-            // `   
-
 
     // ENTREGA 1. MUESTRO LISTA DE PRODUCTOS
     fetch(PRODUCTS_URL)
