@@ -185,18 +185,42 @@
         <hr class="mb-4">    
         <h5 class="mb-3">Forma de pago</h5>
         <div class="d-block my-3">
+          Mercado pago 
+          <a data-toggle="modal" type="button" data-target="#buy" style="color: #0087F7" id="mostrarFormaPago">Seleccionar</a> 
+
+          <div class="modal" tabindex="-1" role="dialog" id="buy">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Forma de pago</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                <form class="needs-validation">
+                  <div class="custom-control custom-radio">
+                    <input id="credito" value="Tarjeta de crédito" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+                    <label class="custom-control-label" for="credito">Tarjeta de crédito</label>
+                  </div>
+                
+                  <div class="custom-control custom-radio">
+                    <input id="transferencia" value="Transferencia bancaria/efectivo" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="transferencia">Transferencia bancaria/efectivo</label>
+                  </div>
+                </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="continuar" data-dismiss="modal">Continuar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           
-          <form class="needs-validation">
-            <div class="custom-control custom-radio">
-              <input id="credito" name="publicationType" type="radio" class="custom-control-input" checked= "" required="">
-              <label class="custom-control-label" for="credito">Tarjeta de credito</label>
-            </div>
-      
-            <div class="custom-control custom-radio">
-              <input id="transferencia" name="publicationType" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="transferencia">Transferencia bancaria</label>
-            </div>
-          </form>
           
         </div>
   

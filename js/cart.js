@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             cantidad--
             actualizarCantidad()
             actualizarCostoEnvio()
-
         }
     
         document.getElementById("mas").onclick = function() {
@@ -71,38 +70,22 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         document.getElementById("comprarBoton").onclick = function() {
             alert("Gracias por tu compra!");
-
         }
 
+        let medioPago = "";
+
+        document.getElementById("credito").onchange = function() {
+            medioPago = this.value;
+        }
+        
+        document.getElementById("transferencia").onchange = function() {
+            medioPago = this.value;
+        }
+
+        document.getElementById("continuar").onclick = function() {
+            alert("Has seleccionado " + medioPago + " como métodos de pago")
+            document.getElementById("mostrarFormaPago").innerHTML = medioPago;
+        }
     });
 
 });
-
-
-
-  // //ENTREGA 5. Costo de envio e importe total
-        // let costoEnvio = document.getElementById("costoEnvio").value;
-        
-        // document.getElementById("premium").onclick = function() {
-        //     costoEnvio = 0;
-
-        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
-        //     let costoTotal = subtotal + costoEnvio;
-        //     document.getElementById("costoTotal").innerHTML = costoTotal;
-        // }
-
-        // document.getElementById("express").onclick = function() {
-        //     costoEnvio = 200;    
-
-        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
-        //     let costoTotal = subtotal + costoEnvio;
-        //     document.getElementById("costoTotal").innerHTML = costoTotal;
-        // }
-
-        // document.getElementById("standard").onclick = function() {
-        //     costoEnvio = 200;    
-
-        //     document.getElementById("costoEnvio").innerHTML = costoEnvio;
-        //     let costoTotal = subtotal + costoEnvio;
-        //     document.getElementById("costoTotal").innerHTML = costoTotal;
-        // }
