@@ -79,11 +79,9 @@
             <div class="col">
               <button class="btn btn-light btn-block" id="menos">-</button>
             </div>
-
             <div class="col">
               <input id="cantidad" value="2" min="0"></p>
             </div>
-
             <div class="col">
               <button class="btn btn-light btn-block" id="mas">+</button>
             </div>
@@ -92,7 +90,7 @@
         </tr>
       </table>
 
-      <form class="needs-validation" id="sell-info">
+      <form class="needs-validation">
         <hr class="mb-4">
         <h4 class="mb-3">Envio</h4>
         
@@ -120,22 +118,16 @@
         <hr class="mb-4">
         <h5 class="mb-3">Domicilio de envio</h5>
 
-        <form class="needs-validation" novalidate>  
+        <form class="needs-validation">  
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="domicilio">Calle*</label>
-              <input type="text" class="form-control" id="domicilio" placeholder="Calle*" value="" required>
-              <div class="invalid-feedback">
-                Debes introducir una calle
-              </div>
+              <input type="text" class="form-control" id="calle" placeholder="Calle*" required>
             </div>
             <div class="form-row">
-              <div class="col-md-6 mb-3">
+              <div class="col-md-7 mb-3">
                 <label for="nro">Número*</label>
-                <input type="text" class="form-control" id="nro" placeholder="Número*" required>
-                <div class="invalid-feedback">
-                  Debes introducir un número
-                </div>
+                <input type="number" class="form-control" id="numero" placeholder="Número*" required>
               </div>
             </div>
             <div class="form-row">
@@ -185,7 +177,7 @@
         <hr class="mb-4">    
         <h5 class="mb-3">Forma de pago</h5>
         <div class="d-block my-3">
-          Mercado pago 
+          Tarjeta de crédito
           <a data-toggle="modal" type="button" data-target="#buy" style="color: #0087F7" id="mostrarFormaPago">Seleccionar</a> 
 
           <div class="modal" tabindex="-1" role="dialog" id="buy">
@@ -198,18 +190,47 @@
                   </button>
                 </div>
                 <div class="modal-body">
-
-                <form class="needs-validation">
+                
                   <div class="custom-control custom-radio">
                     <input id="credito" value="Tarjeta de crédito" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
                     <label class="custom-control-label" for="credito">Tarjeta de crédito</label>
                   </div>
-                
-                  <div class="custom-control custom-radio">
-                    <input id="transferencia" value="Transferencia bancaria/efectivo" name="publicationType" type="radio" class="custom-control-input" required="">
-                    <label class="custom-control-label" for="transferencia">Transferencia bancaria/efectivo</label>
+                  <br>
+
+                  <div class="col-md-6 mb-3" style="display: inline-block">  
+                    <h6>Nombre y apellido</h6>
+                    <input type="text" class="form-control" id="nombretarjeta" placeholder="" required="">
                   </div>
-                </form>
+              
+                  <div class="col-md-5 mb-3" style="display: inline-block">
+                    <h6>Número de tarjeta</h6>
+                    <input type="password" size="12" class="form-control" id="numeroTarjeta" placeholder="**** **** **** ****" required="">
+                  </div>
+
+                  <div class="col-md-8 mb-3" style="display: inline-block">
+                    <div class="form-row">
+                      <div class="col-md-10 mb-3" style="display: inline-block">
+                        <h6>Fecha de vencimiento</h6>
+                        <input type="month" class="form-control" id="fechaVenc" placeholder="" required="">
+                      </div>
+                      <div class="col-md-3 mb-3" style="display: inline-block">
+                        <h6>CVV</h6>
+                        <input type="text" class="form-control" id="codigo" placeholder="***" required="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="mb-4">
+                  <div class="custom-control custom-radio">
+                    <input id="transferencia" value="Transferencia" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="transferencia">Transferencia bancaria</label>
+                  </div>
+                  <br>
+                  
+                  <div class="col-md-5 mb-3" style="display: inline-block">
+                    <h6>Número de cuenta</h6>
+                    <input type="text" class="form-control" id="numeroCuenta" placeholder="" required="">
+                  </div>
 
                 </div>
                 <div class="modal-footer">
@@ -225,7 +246,7 @@
         </div>
   
         <hr class="mb-4">
-        <a class="btn btn-primary btn-lg" href="home.html" id="comprarBoton">Comprar</a>
+        <button type="submit" class="btn btn-primary btn-lg" formaction="home.html" id="comprarBoton">Comprar</button>
       </form>
     </div>
   </main>
@@ -257,6 +278,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="sweetalert2.min.js"></script>
 </body>
 
 </html>

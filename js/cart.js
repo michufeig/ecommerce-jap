@@ -68,10 +68,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             actualizarCostoEnvio()
         }
 
-        document.getElementById("comprarBoton").onclick = function() {
-            alert("Gracias por tu compra!");
-        }
-
         let medioPago = "";
 
         document.getElementById("credito").onchange = function() {
@@ -81,11 +77,73 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("transferencia").onchange = function() {
             medioPago = this.value;
         }
-
+        
         document.getElementById("continuar").onclick = function() {
-            alert("Has seleccionado " + medioPago + " como métodos de pago")
+            console.log(medioPago)
+           
+            alert("Has seleccionado '" + medioPago + "' como métodos de pago")
             document.getElementById("mostrarFormaPago").innerHTML = medioPago;
         }
+
+        function validar() {
+            let calle = document.getElementById("calle").value
+            let numero = document.getElementById("numero").value
+            let pais = document.getElementById("pais").value
+
+            if (calle.length == 0) {
+                alert("Por favor llenar todos los datos")
+                return;
+            }
+            if (numero.length == 0) {
+                alert("Por favor llenar todos los datos")
+                return;
+            }
+            if (pais.length == 0) {
+                alert("Por favor llenar todos los datos")
+                return;
+            }
+            else {
+                window.location.href="home.html"
+            }
+        }
+        document.getElementById("comprarBoton").onclick = function() {
+            validar();
+         }
+
+        //NO ME VALIDA MEDIO DE PAGO!!!!!! EL RESTO SI
+        let nombretarjeta = document.getElementById("nombretarjeta").value
+        let numeroTarjeta = document.getElementById("numeroTarjeta").value
+        let fechaVenc = document.getElementById("fechaVenc").value
+        let codigo = document.getElementById("codigo").value
+        let numeroCuenta = document.getElementById("numeroCuenta").value    
+
+        document.getElementById("continuar").onclick = function() {
+            if (medioPago == "Tarjeta de crédito"){
+                if (nombretarjeta.length == 0) {
+                    return;
+                }
+                if (numeroTarjeta.length == 0) {
+                    return;
+                }
+                if (fechaVenc.length == 0) {
+                    return;
+                }
+                if (codigo.length == 0) {
+                    return;
+                }
+            }
+
+            if (medioPago == "Transferencia"){
+                if (numeroCuenta.length == 0) {
+                    return;
+                }
+            }      
+            
+            else {
+                alert("MAL!! NO ME VALIDA")
+            }
+        }
+
     });
 
 });
