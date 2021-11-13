@@ -68,82 +68,110 @@ document.addEventListener("DOMContentLoaded", function(e){
             actualizarCostoEnvio()
         }
 
+        // ENTREGA 7. VALIDAR CAMPOS PARA COMPRAR
+
+        let nombreTarjeta = document.getElementById("nombreTarjeta").value
+        let numeroTarjeta = document.getElementById("numeroTarjeta").value
+        let fechaVenc = document.getElementById("fechaVenc").value
+        let codigo = document.getElementById("codigo").value
+        let numeroCuenta = document.getElementById("numeroCuenta").value    
         let medioPago = "";
 
         document.getElementById("credito").onchange = function() {
             medioPago = this.value;
+            document.getElementById("mostrarFormaPago").innerHTML = medioPago;
+
+            document.getElementById("nombreTarjeta").disabled = false
+            document.getElementById("numeroTarjeta").disabled = false
+            document.getElementById("fechaVenc").disabled = false
+            document.getElementById("codigo").disabled = false
+            document.getElementById("numeroCuenta").disabled = true
+            
+            // if (nombreTarjeta.length != 0 && numeroTarjeta.length != 0 && fechaVenc.length != 0 && codigo.length != 0) {
+            //     document.getElementById("continuar").disabled = false
+            // } 
         }
         
         document.getElementById("transferencia").onchange = function() {
             medioPago = this.value;
-        }
-        
-        document.getElementById("continuar").onclick = function() {
-            console.log(medioPago)
-           
-            alert("Has seleccionado '" + medioPago + "' como métodos de pago")
             document.getElementById("mostrarFormaPago").innerHTML = medioPago;
+
+            document.getElementById("nombreTarjeta").disabled = true
+            document.getElementById("numeroTarjeta").disabled = true
+            document.getElementById("fechaVenc").disabled = true
+            document.getElementById("codigo").disabled = true
+            document.getElementById("numeroCuenta").disabled = false
+            
+            // if (numeroCuenta.length != 0) {
+            //     document.getElementById("continuar").disabled = false  
+            // } 
         }
+        let avanzar = 0;
+        function validarModal() {
+            if (medioPago == "Tarjeta de crédito") {
+                if (nombreTarjeta == "") {
+                    avanzar++
+                }
+                if (numeroTarjeta == "") {
+                    avanzar++
+                }
+                if (fechaVenc == "") {
+                    avanzar++
+                }
+                if (codigo == "") {
+                    avanzar++
+                }
+                if (avanzar != 0) {
+                    document.getElementById("continuar").disabled = false;
+                } 
+            }
+
+            if (medioPago == "Transferencia") {
+                if (numeroCuenta == "") {
+                    avanzar++
+                }
+                if (avanzar != 0) {
+                    document.getElementById("continuar").disabled = false;
+                } 
+            }
+
+        }
+
+        document.getElementById("nombreTarjeta").addEventListener("keyup", validarModal);
+        document.getElementById("numeroTarjeta").addEventListener("keyup", validarModal);
+        document.getElementById("fechaVenc").addEventListener("keyup", validarModal);
+        document.getElementById("codigo").addEventListener("keyup", validarModal);
+        document.getElementById("numeroCuenta").addEventListener("keyup", validarModal);
 
         function validar() {
-            let calle = document.getElementById("calle").value
-            let numero = document.getElementById("numero").value
-            let pais = document.getElementById("pais").value
+            let calle = document.getElementById("calle").value;
+            let numero = document.getElementById("numero").value;
+            let pais = document.getElementById("pais").value;
 
             if (calle.length == 0) {
-                alert("Por favor llenar todos los datos")
+                alert("Por favor ingrese la calle")
                 return;
             }
             if (numero.length == 0) {
-                alert("Por favor llenar todos los datos")
+                alert("Por favor ingrese el numero de puerta")
                 return;
             }
             if (pais.length == 0) {
-                alert("Por favor llenar todos los datos")
+                alert("Por favor ingrese el pais")
+                return;
+            }    
+            if (medioPago == "") {
+                alert("Por favor seleccione un medio de pago")
                 return;
             }
             else {
                 window.location.href="home.html"
             }
         }
+
         document.getElementById("comprarBoton").onclick = function() {
-            validar();
-         }
-
-        //NO ME VALIDA MEDIO DE PAGO!!!!!! EL RESTO SI
-        let nombretarjeta = document.getElementById("nombretarjeta").value
-        let numeroTarjeta = document.getElementById("numeroTarjeta").value
-        let fechaVenc = document.getElementById("fechaVenc").value
-        let codigo = document.getElementById("codigo").value
-        let numeroCuenta = document.getElementById("numeroCuenta").value    
-
-        document.getElementById("continuar").onclick = function() {
-            if (medioPago == "Tarjeta de crédito"){
-                if (nombretarjeta.length == 0) {
-                    return;
-                }
-                if (numeroTarjeta.length == 0) {
-                    return;
-                }
-                if (fechaVenc.length == 0) {
-                    return;
-                }
-                if (codigo.length == 0) {
-                    return;
-                }
-            }
-
-            if (medioPago == "Transferencia"){
-                if (numeroCuenta.length == 0) {
-                    return;
-                }
-            }      
-            
-            else {
-                alert("MAL!! NO ME VALIDA")
-            }
+            validar();    
         }
-
     });
 
 });
