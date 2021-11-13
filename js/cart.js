@@ -87,9 +87,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             document.getElementById("codigo").disabled = false
             document.getElementById("numeroCuenta").disabled = true
             
-            // if (nombreTarjeta.length != 0 && numeroTarjeta.length != 0 && fechaVenc.length != 0 && codigo.length != 0) {
-            //     document.getElementById("continuar").disabled = false
-            // } 
         }
         
         document.getElementById("transferencia").onchange = function() {
@@ -102,44 +99,42 @@ document.addEventListener("DOMContentLoaded", function(e){
             document.getElementById("codigo").disabled = true
             document.getElementById("numeroCuenta").disabled = false
             
-            // if (numeroCuenta.length != 0) {
-            //     document.getElementById("continuar").disabled = false  
-            // } 
         }
-        let avanzar = 0;
+
+        let avanzar = true;
         function validarModal() {
             if (medioPago == "Tarjeta de crédito") {
-                if (nombreTarjeta == "") {
-                    avanzar++
+                if (nombreTarjeta.length == 0) {
+                    avanzar = false
                 }
-                if (numeroTarjeta == "") {
-                    avanzar++
+                if (numeroTarjeta.length == 0) {
+                    avanzar = false
                 }
-                if (fechaVenc == "") {
-                    avanzar++
+                if (fechaVenc.length == 0) {
+                    avanzar = false
                 }
-                if (codigo == "") {
-                    avanzar++
+                if (codigo.length == 0) {
+                    avanzar = false
                 }
-                if (avanzar != 0) {
+                if (avanzar = true) {
                     document.getElementById("continuar").disabled = false;
                 } 
             }
 
             if (medioPago == "Transferencia") {
-                if (numeroCuenta == "") {
-                    avanzar++
+                if (numeroCuenta.length == 0) {
+                    avanzar = false
                 }
-                if (avanzar != 0) {
+                if (avanzar = true) {
                     document.getElementById("continuar").disabled = false;
                 } 
             }
 
         }
 
-        document.getElementById("nombreTarjeta").addEventListener("keyup", validarModal);
-        document.getElementById("numeroTarjeta").addEventListener("keyup", validarModal);
-        document.getElementById("fechaVenc").addEventListener("keyup", validarModal);
+        // document.getElementById("nombreTarjeta").addEventListener("keyup", validarModal);
+        // document.getElementById("numeroTarjeta").addEventListener("keyup", validarModal);
+        // document.getElementById("fechaVenc").addEventListener("keyup", validarModal);
         document.getElementById("codigo").addEventListener("keyup", validarModal);
         document.getElementById("numeroCuenta").addEventListener("keyup", validarModal);
 
